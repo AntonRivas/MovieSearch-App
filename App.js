@@ -21,7 +21,7 @@ export default class App extends React.Component {
     this.getFilms()
   }
   getFilms = async () => {
-    const results = await fetchFilms()
+    const results = await fetchFilms('Terminator')
     this.setState({films: results})
     console.log(this.state.films)
   }
