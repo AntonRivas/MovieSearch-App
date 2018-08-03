@@ -25,7 +25,7 @@ export default class MovieInfo extends React.Component {
           <Button title = 'Go to Main Menu' onPress = {() => this.props.navigation.navigate('Main')}/>
           <Text> {query}</Text>
           <ScrollView>
-          {films.map(film => (<ToFilm title = {films.title} year = {films.year} poster = {films.poster} key = {films.key}/> ))}
+          {films.map(film => (<ToFilm title = {film.title} year = {film.year} poster = {film.poster} key = {film.key}/> ))}
           </ScrollView>
         </View>
         )
