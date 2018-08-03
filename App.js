@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import {createStackNavigator} from 'react-navigation'
 import MainScreen from './screens/MainScreen.js'
-import MovieResults from './screens/MovieInfo.js'
+import MovieResults from './screens/MovieResults.js'
 import {fetchFilms} from './api.js'
 
 const AppNavigator = createStackNavigator({
