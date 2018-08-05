@@ -17,22 +17,11 @@ export default class App extends React.Component {
     films: null,
     query: 'Testing'
   }
-  // componentDidMount() {
-  //   this.getFilms()
-  // }
-  // getFilms = async () => {
-  //   const results = await fetchFilms(this.state.query)
-  //   this.setState({films: results})
-  //   console.log(this.state.films)
-  // }
+
   render() {
     return (
-      <AppNavigator screenProps = {{films: this.state.films, query: this.state.query, setQuery: this.setQuery}}/>
+      <AppNavigator/>
 );
   }
-  // setQuery = (search) =>{
-  //   return(
-  //     this.setState({query: search})
-  //   )
-  // }
+
 }

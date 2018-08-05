@@ -1,6 +1,7 @@
 import React from 'react'
-import {View,StyleSheet, Button, Text,TextInput} from 'react-native'
+import {TouchableOpacity, View,StyleSheet, ScrollView, Button, Text,TextInput} from 'react-native'
 import {fetchFilms} from '../api.js'
+import ToFilm from '../ToFilm.js'
 
 const styles = StyleSheet.create({
   container: {
@@ -13,31 +14,35 @@ const styles = StyleSheet.create({
 
 export default class MainScreen extends React.Component {
   state = {
-    films: 'Tester'
+    films: [{title:'No results',key:'fake-key'}]
   }
   static navigationOptions = {
     title: 'Movie Browser',
   };
 
   render(){
-    const {
-      screenProps: {
-        setQuery
-      }
-    } = this.props
+
     return(
         <View style = {styles.container}>
           <TextInput style = {{width: '60%',height: '7%', fontSize: 20, textAlign: 'center'}} placeholder = 'Search Films'
             onChangeText = {text => {this.getFilms(text)}}/>
-          <View style = {{height: '8%', width: '60%', padding:20 }}>
-            <Button title = 'Go to Movie Info' onPress = {() => this.props.navigation.navigate('Movie', {films: this.state.films})}/>
-          </View>
+          <ScrollView>
+          {this.state.films.map(film => (
+            <TouchableOpacity  key = {film.key} onPress = {() => {this.props.navigation.navigate('Movie', {title: film.title})}}>
+              <ToFilm title = {film.title} year = {film.year} poster = {film.poster}/>
+            </TouchableOpacity> ))}
+          </ScrollView>
         </View>
       )
   }
   getFilms = async (search) => {
-    const results = await fetchFilms(search)
-    this.setState({films: results})
-    console.log(this.state.films)
+    if(search.length >= 3){
+      const results = await fetchFilms(search)
+        if(typeof results != 'undefined'){
+          this.setState({films: results})
+          console.log(this.state.films)
+        }
+        else{this.setState({films: [title: 'No results']})}
+    }
   }
 }
