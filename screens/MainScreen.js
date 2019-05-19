@@ -42,7 +42,7 @@ export default class MainScreen extends React.Component {
           this.setState({films: results})
           console.log(this.state.films)
         }
-        else{this.setState({films: [title: 'No results']})}
+        else{this.setState({movies: [{title: 'No results'}]})}
     }
   }
 }
