@@ -2,9 +2,9 @@
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "dependencies": {
-    "expo": "^25.1.2",
-    "react": "^16.2.0",
+    "expo": "^32.0.6",
+    "react": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
-    "react-navigation": "^2.9.3"
+    "react-navigation": "^3.11.0"
   }
 }
